@@ -130,14 +130,17 @@ async function autoTransaction() {
             console.log(chalk.red(`❌ Transaction failed: ${error.message}`));
         }
 
-        console.log(chalk.gray("⌛ Waiting 35 seconds before next transaction...\n"));
-        await new Promise(res => setTimeout(res, 35000));
+              const minDelay = 200000; // 3,33 menit
+const maxDelay = 660000; // 10 menit
+const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+
+console.log(chalk.gray(`⌛ Waiting ${randomDelay / 1000} seconds before next transaction...\n`));
+await new Promise(res => setTimeout(res, randomDelay));
     }
 
     console.log(chalk.greenBright("\n🎉 All transactions completed! Next run in 24 hours.\n"));
     setTimeout(autoTransaction, 86400000); // Restart after 24 hours
 }
-
 // Function to handle user input
 async function askQuestion(query) {
     process.stdout.write(chalk.yellow(query));
