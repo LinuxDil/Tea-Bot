@@ -131,7 +131,7 @@ async function autoTransaction() {
         }
 
               const minDelay = 200000; // 3,33 menit
-const maxDelay = 660000; // 10 menit
+const maxDelay = 660000; // 10 menit an
 const randomDelay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
 
 console.log(chalk.gray(`⌛ Waiting ${randomDelay / 1000} seconds before next transaction...\n`));
