@@ -138,8 +138,15 @@ console.log(chalk.gray(`⌛ Waiting ${randomDelay / 1000} seconds before next tr
 await new Promise(res => setTimeout(res, randomDelay));
     }
 
-    console.log(chalk.greenBright("\n🎉 All transactions completed! Next run in 24 hours.\n"));
-    setTimeout(autoTransaction, 86400000); // Restart after 24 hours
+const minMinutes = 5;
+const maxMinutes = 10;
+// Hitung waktu acak dalam milidetik
+const randomDelay = Math.floor(Math.random() * (maxMinutes - minMinutes) * 60 * 1000) + (minMinutes * 60 * 1000);
+// Ubah milidetik jadi menit untuk ditampilkan
+const delayInMinutes = (randomDelay / (60 * 1000)).toFixed(2);
+console.log(chalk.greenBright(`\n🎉 All transactions completed! Next run in ${delayInMinutes} minutes.\n`));
+setTimeout(autoTransaction, randomDelay);
+
 }
 // Function to handle user input
 async function askQuestion(query) {
