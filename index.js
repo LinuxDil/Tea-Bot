@@ -113,7 +113,7 @@ async function autoTransaction() {
 
     for (let i = 0; i < savedTransactionCount; i++) {
         const recipient = addresses[Math.floor(Math.random() * addresses.length)];
-        const amount = (Math.random() * (0.09 - 0.01) + 0.01).toFixed(4);
+        const amount = (Math.random() * (0.0009 - 0.0001) + 0.0001).toFixed(4);
 
         console.log(chalk.blueBright(`🔹 Transaction ${i + 1}/${savedTransactionCount}`));
         console.log(chalk.cyan(`➡ Sending ${chalk.green(amount + " ETH")} to ${chalk.yellow(recipient)}`));
